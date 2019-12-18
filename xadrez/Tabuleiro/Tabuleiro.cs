@@ -39,7 +39,7 @@ namespace tabuleiro
         public void colocarPeca(Peca p, Posicao pos)
         {
             if (existePeca(pos)){
-                throw new TabuleiroExcessao("Já existe uma peça nessa posição");
+                throw new TabuleiroExcecao("Já existe uma peça nessa posição");
             }
             pecas[pos.Linha, pos.Coluna] = p;
 
@@ -59,7 +59,7 @@ namespace tabuleiro
         {
             if (!posicaoValida(pos)) // ! signifca não, se a posição não for valida!
             {
-                throw new TabuleiroExcessao("Posicão Inválida!");
+                throw new TabuleiroExcecao("Posicão Inválida!");
             }
         }
 

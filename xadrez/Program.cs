@@ -27,7 +27,7 @@ namespace xadrez
                 Tela.imprimirTabuleiro(tabuleiro);
 
             }
-            catch(TabuleiroExcessao e)
+            catch(TabuleiroExcecao e)
             {
                 Console.WriteLine(e.Message);
             }

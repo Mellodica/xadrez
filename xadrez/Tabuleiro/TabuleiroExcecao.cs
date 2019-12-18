@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace tabuleiro
 {
-    class TabuleiroExcessao : Exception
+    class TabuleiroExcecao : Exception
     {
-        public TabuleiroExcessao(string msg) : base(msg)
+        public TabuleiroExcecao(string msg) : base(msg)
         {
 
         }
