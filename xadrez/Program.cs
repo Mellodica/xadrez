@@ -20,22 +20,38 @@ namespace xadrez
 
                 while (!partida.terminada)
                 {
-                    Console.Clear();
-                    Tela.imprimirTabuleiro(partida.tab);
+                    try
+                    {
+                        Console.Clear();
+                        Tela.imprimirTabuleiro(partida.tab);
+                        Console.WriteLine();
+                        Console.WriteLine("Turno: " + partida.turno);
+                        Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
 
-                    Console.Write("Origem: ");
-                    Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
 
-                    bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
+                        Console.Write("Origem: ");
+                        Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
+                        partida.validarPosicaoDeOrigem(origem);
 
-                    Console.Clear();
-                    Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);
-                    Console.Write("Destino: ");
-                    Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
 
-                    partida.executaMovimenta(origem, destino);
+                        bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
+
+                        Console.Clear();
+                        Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);
+                        Console.Write("Destino: ");
+                        Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
+                        partida.validarPosicaoDeDestino(origem, destino);
+
+
+                        partida.realizaJogada(origem, destino);
+                    }
+                    catch (TabuleiroExcecao e)
+                    {
+                        Console.Write(e.Message);
+                        Console.ReadLine();
+                    }
                 }
-                Tela.imprimirTabuleiro(partida.tab);
+                //Tela.imprimirTabuleiro(partida.tab);
                 /*
                 Tabuleiro tabuleiro = new Tabuleiro(8, 8);
                 tabuleiro.colocarPeca(new Torre(tabuleiro, Cor.Preta), new Posicao(0, 0));
