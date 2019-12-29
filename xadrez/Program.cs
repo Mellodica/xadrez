@@ -56,6 +56,12 @@ namespace xadrez
                         Console.ReadLine();
                     }
                 }
+
+                Console.Clear();
+                Tela.imprimirPartida(partida);
+
+
+
                 //Tela.imprimirTabuleiro(partida.tab);
                 /*
                 Tabuleiro tabuleiro = new Tabuleiro(8, 8);
