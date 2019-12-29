@@ -22,12 +22,16 @@ namespace xadrez
                 {
                     try
                     {
-                        Console.Clear();
-                        Tela.imprimirTabuleiro(partida.tab);
+
+                        /*Tela.imprimirTabuleiro(partida.tab);
                         Console.WriteLine();
                         Console.WriteLine("Turno: " + partida.turno);
                         Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+                        */
 
+
+                        Console.Clear();
+                        Tela.imprimirPartida(partida);
 
                         Console.Write("Origem: ");
                         Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
@@ -47,7 +51,8 @@ namespace xadrez
                     }
                     catch (TabuleiroExcecao e)
                     {
-                        Console.Write(e.Message);
+                        Console.WriteLine(e.Message);
+                        Console.WriteLine("Repita a Jogada!");
                         Console.ReadLine();
                     }
                 }
