@@ -5,12 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using tabuleiro;
 
-namespace xadrez
+namespace xadrez.xadrez
 {
-    class Torre : Peca
+    class Bispo : Peca
     {
-
-        public Torre(Tabuleiro tab, Cor cor) : base(tab, cor)
+        public Bispo(Tabuleiro tab, Cor cor) : base(tab, cor)
         {
 
         }
@@ -26,8 +25,10 @@ namespace xadrez
             bool[,] mat = new bool[tab.linhas, tab.colunas];
 
             Posicao pos = new Posicao(0, 0);
-            //Esquerda
-            pos.definirValores(posicao.Linha, posicao.Coluna - 1);
+           
+
+            //NO
+            pos.definirValores(posicao.Linha - 1, posicao.Coluna - 1);
 
             while (tab.posicaoValida(pos) && podeMover(pos))
             {
@@ -36,11 +37,11 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.definirValores(pos.Linha, pos.Coluna - 1);
+                pos.definirValores(pos.Linha - 1, pos.Coluna - 1);
             }
 
-            //Direita
-            pos.definirValores(posicao.Linha, posicao.Coluna + 1);
+            //NE
+            pos.definirValores(posicao.Linha - 1, posicao.Coluna + 1);
 
             while (tab.posicaoValida(pos) && podeMover(pos))
             {
@@ -49,11 +50,11 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.definirValores(pos.Linha, pos.Coluna + 1);
+                pos.definirValores(pos.Linha - 1, pos.Coluna + 1);
             }
 
-            //Acima
-            pos.definirValores(posicao.Linha - 1, posicao.Coluna);
+            //SE
+            pos.definirValores(posicao.Linha + 1, posicao.Coluna + 1);
 
             while (tab.posicaoValida(pos) && podeMover(pos))
             {
@@ -62,11 +63,12 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.definirValores(pos.Linha - 1, pos.Coluna);
+                pos.definirValores(pos.Linha + 1, pos.Coluna + 1);
             }
 
-            //Abaixo
-            pos.definirValores(posicao.Linha + 1, posicao.Coluna);
+
+            //SO
+            pos.definirValores(posicao.Linha + 1, posicao.Coluna - 1);
 
             while (tab.posicaoValida(pos) && podeMover(pos))
             {
@@ -75,16 +77,20 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.definirValores(pos.Linha + 1, pos.Coluna);
+                pos.definirValores(pos.Linha + 1, pos.Coluna - 1);
             }
+
             return mat;
         }
 
         public override string ToString()
         {
-            return "T";
+            return "B";
         }
 
 
     }
+
+
+
 }
